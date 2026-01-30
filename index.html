@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Design Guide - Redirecting...</title>
+    
+    <!-- Google AdSense Verification & Auto Ads -->
+    <meta name="google-adsense-account" content="ca-pub-9850125413842669">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9850125413842669"
+         crossorigin="anonymous"></script>
+    
+    <!-- Auto redirect to main site after 2 seconds -->
+    <meta http-equiv="refresh" content="2; url=https://sharma18b.github.io/SystemDesignGuide/">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeIn 0.6s ease-out 0.2s both;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+        
+        .link {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            animation: fadeIn 0.6s ease-out 0.4s both;
+        }
+        
+        .link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .info {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.6s ease-out 0.6s both;
+        }
+        
+        .info h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .info p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+            
+            .logo {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🚀</div>
+        <h1>System Design Study Guide</h1>
+        <p>Master 40 Real-World System Design Problems</p>
+        
+        <div class="spinner"></div>
+        
+        <p style="font-size: 0.9rem; opacity: 0.8;">Redirecting you to the main site...</p>
+        
+        <a href="https://sharma18b.github.io/SystemDesignGuide/" class="link">
+            Click here if not redirected automatically
+        </a>
+        
+        <div class="info">
+            <h2>📚 What You'll Learn</h2>
+            <p>40 System Design Problems • 400 Learning Files • 8 Categories</p>
+        </div>
+    </div>
+    
+    <script>
+        // Fallback redirect in case meta refresh doesn't work
+        setTimeout(function() {
+            window.location.href = 'https://sharma18b.github.io/SystemDesignGuide/';
+        }, 2000);
+    </script>
+</body>
+</html>
