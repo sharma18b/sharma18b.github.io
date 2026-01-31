@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System Design Guide - Redirecting...</title>
+    <title>System Design Study Guide - Master 40 Real-World Problems</title>
+    <meta name="description" content="Comprehensive system design interview preparation with 40 problems across 8 categories. Learn architecture, scaling, databases, APIs, and more.">
     
     <!-- Google AdSense Verification & Auto Ads -->
     <meta name="google-adsense-account" content="ca-pub-9850125413842669">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9850125413842669"
          crossorigin="anonymous"></script>
-    
-    <!-- Auto redirect to main site after 2 seconds -->
-    <meta http-equiv="refresh" content="2; url=https://sharma18b.github.io/SystemDesignGuide/">
     
     <style>
         * {
@@ -22,18 +20,22 @@
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 2rem;
+            min-height: 100vh;
+            padding: 2rem 1rem;
         }
         
         .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        .header {
             text-align: center;
-            max-width: 600px;
+            margin-bottom: 4rem;
+            animation: fadeInDown 0.6s ease-out;
         }
         
         .logo {
@@ -43,74 +45,303 @@
         }
         
         h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
-            animation: fadeIn 0.6s ease-out;
+            display: block;
         }
         
-        p {
-            font-size: 1.125rem;
-            margin-bottom: 2rem;
+        .stat-label {
+            font-size: 0.875rem;
             opacity: 0.9;
-            animation: fadeIn 0.6s ease-out 0.2s both;
         }
         
-        .spinner {
-            border: 4px solid rgba(255,255,255,0.3);
-            border-top: 4px solid white;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 2rem auto;
+        /* Main CTA */
+        .main-cta {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeIn 0.6s ease-out 0.3s both;
         }
         
-        .link {
+        .btn-primary {
             display: inline-block;
-            padding: 1rem 2rem;
+            padding: 1.25rem 3rem;
             background: white;
             color: #667eea;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-            animation: fadeIn 0.6s ease-out 0.4s both;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.125rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         
-        .link:hover {
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        
+        /* Categories Grid */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            animation: fadeIn 0.6s ease-out 0.5s both;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            animation: fadeIn 0.6s ease-out 0.7s both;
+        }
+        
+        .category-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.25);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .category-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        
+        .category-description {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .category-count {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        /* About Section */
+        .about-section {
+            margin-bottom: 4rem;
+            animation: fadeIn 0.6s ease-out 0.5s both;
+        }
+        
+        .about-content {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .about-content p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+        
+        .about-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Blog Section */
+        .blog-section {
+            margin-bottom: 4rem;
+            animation: fadeIn 0.6s ease-out 1.1s both;
+        }
+        
+        .blog-content {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .blog-content p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+        
+        .blog-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .topic-tag {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .btn-blog {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .btn-blog:hover {
+            background: rgba(255,255,255,0.3);
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         
-        .info {
-            margin-top: 3rem;
-            padding: 1.5rem;
+        /* Learning Path */
+        .learning-path {
+            margin-bottom: 4rem;
+            animation: fadeIn 0.6s ease-out 1.3s both;
+        }
+        
+        .path-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .path-step {
             background: rgba(255,255,255,0.1);
-            border-radius: 12px;
             backdrop-filter: blur(10px);
-            animation: fadeIn 0.6s ease-out 0.6s both;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
         }
         
-        .info h2 {
+        .path-step:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: white;
+            color: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+        
+        .path-step h3 {
             font-size: 1.25rem;
-            margin-bottom: 0.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
         }
         
-        .info p {
+        .path-step p {
             font-size: 0.9rem;
-            margin-bottom: 0;
+            opacity: 0.9;
+            line-height: 1.6;
         }
         
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.8;
+            animation: fadeIn 0.6s ease-out 1.5s both;
         }
         
+        .footer a {
+            transition: opacity 0.2s;
+        }
+        
+        .footer a:hover {
+            opacity: 0.7;
+        }
+        
+        /* Animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
                 transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
             }
             to {
                 opacity: 1;
@@ -127,46 +358,191 @@
             }
         }
         
+        /* Responsive */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 1.75rem;
+            .stats {
+                gap: 1rem;
             }
             
-            p {
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn-primary {
+                padding: 1rem 2rem;
                 font-size: 1rem;
-            }
-            
-            .logo {
-                font-size: 3rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo">🚀</div>
-        <h1>System Design Study Guide</h1>
-        <p>Master 40 Real-World System Design Problems</p>
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">🚀</div>
+            <h1>System Design Study Guide</h1>
+            <p class="subtitle">Master 40 Real-World System Design Problems with 400+ In-Depth Learning Files</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">40</span>
+                    <span class="stat-label">Design Problems</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">400+</span>
+                    <span class="stat-label">Learning Files</span>
+                </div>
+            </div>
+        </header>
         
-        <div class="spinner"></div>
-        
-        <p style="font-size: 0.9rem; opacity: 0.8;">Redirecting you to the main site...</p>
-        
-        <a href="https://sharma18b.github.io/SystemDesignGuide/" class="link">
-            Click here if not redirected automatically
-        </a>
-        
-        <div class="info">
-            <h2>📚 What You'll Learn</h2>
-            <p>40 System Design Problems • 400 Learning Files • 8 Categories</p>
+        <!-- Main CTA -->
+        <div class="main-cta">
+            <a href="https://sharma18b.github.io/SystemDesignGuide/" class="btn-primary">
+                🎯 Start Learning Now
+            </a>
         </div>
+        
+        <!-- About Section -->
+        <div class="about-section">
+            <h2 class="section-title">📖 About This Guide</h2>
+            <div class="about-content">
+                <p>
+                    Welcome to the comprehensive System Design Study Guide! This resource is designed to help you master 
+                    system design interviews with real-world examples from companies like Google, Facebook, Amazon, Netflix, 
+                    Uber, and more. Each problem includes detailed architecture diagrams, database schemas, API designs, 
+                    scaling strategies, and interview tips.
+                </p>
+                <p>
+                    Whether you're preparing for FAANG interviews or building production systems, this guide covers everything 
+                    from basic concepts to advanced distributed systems. Learn how to design scalable, reliable, and efficient 
+                    systems that handle millions of users.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Categories Section -->
+        <h2 class="section-title">📚 Explore by Category</h2>
+        
+        <div class="categories-grid">
+            <a href="https://sharma18b.github.io/SystemDesignGuide/category.html?category=01-social-feeds" class="category-card">
+                <span class="category-icon">📱</span>
+                <h3 class="category-title">Social Feeds & Content</h3>
+                <p class="category-description">Design Twitter, Instagram, Facebook Newsfeed, Reddit, and YouTube/Netflix platforms</p>
+                <span class="category-count">5 Problems • 50 Files</span>
+            </a>
+            
+            <a href="https://sharma18b.github.io/SystemDesignGuide/category.html?category=02-messaging-collaboration" class="category-card">
+                <span class="category-icon">💬</span>
+                <h3 class="category-title">Messaging & Collaboration</h3>
+                <p class="category-description">Build real-time messaging, video conferencing, and collaborative editing systems</p>
+                <span class="category-count">5 Problems • 50 Files</span>
+            </a>
+            
+            <a href="https://sharma18b.github.io/SystemDesignGuide/category.html?category=03-ecommerce-payments" class="category-card">
+                <span class="category-icon">🛒</span>
+                <h3 class="category-title">E-commerce & Payments</h3>
+                <p class="category-description">Design e-commerce platforms, payment systems, digital wallets, and delivery services</p>
+                <span class="category-count">5 Problems • 50 Files</span>
+            </a>
+            
+            <a href="https://sharma18b.github.io/SystemDesignGuide/category.html?category=04-infrastructure-storage" class="category-card">
+                <span class="category-icon">🗄️</span>
+                <h3 class="category-title">Infrastructure & Storage</h3>
+                <p class="category-description">Build key-value stores, caches, distributed file systems, CDNs, and load balancers</p>
+                <span class="category-count">5 Problems • 50 Files</span>
+            </a>
+            
+            <a href="https://sharma18b.github.io/SystemDesignGuide/category.html?category=05-events-queues" class="category-card">
+                <span class="category-icon">⚡</span>
+                <h3 class="category-title">Events & Queues</h3>
+                <p class="category-description">Design rate limiters, messaging systems, distributed counters, and task schedulers</p>
+                <span class="category-count">5 Problems • 50 Files</span>
+            </a>
+            
+            <a href="https://sharma18b.github.io/SystemDesignGuide/category.html?category=06-data-analytics" class="category-card">
+                <span class="category-icon">📊</span>
+                <h3 class="category-title">Data & Analytics</h3>
+                <p class="category-description">Build web analytics, monitoring systems, log analysis, and ad click aggregation</p>
+                <span class="category-count">5 Problems • 50 Files</span>
+            </a>
+            
+            <a href="https://sharma18b.github.io/SystemDesignGuide/category.html?category=07-coordination-consistency" class="category-card">
+                <span class="category-icon">🔄</span>
+                <h3 class="category-title">Coordination & Consistency</h3>
+                <p class="category-description">Design unique ID generators, distributed locking, and resource allocation systems</p>
+                <span class="category-count">5 Problems • 50 Files</span>
+            </a>
+            
+            <a href="https://sharma18b.github.io/SystemDesignGuide/category.html?category=08-advanced-systems" class="category-card">
+                <span class="category-icon">🎮</span>
+                <h3 class="category-title">Advanced Systems</h3>
+                <p class="category-description">Master complex systems: Uber, Ticketmaster, Google Search, Stock Trading, Kubernetes</p>
+                <span class="category-count">5 Problems • 50 Files</span>
+            </a>
+        </div>
+        
+        <!-- Tech Blog Section -->
+        <div class="blog-section">
+            <h2 class="section-title">✍️ Tech Blog & Insights</h2>
+            <div class="blog-content">
+                <p>
+                    Explore technical articles and insights from my journey in software engineering. I write about 
+                    cloud computing, artificial intelligence, system design patterns, and real-world engineering challenges 
+                    at scale. Learn from practical experiences building production systems at Amazon and other tech companies.
+                </p>
+                <div class="blog-topics">
+                    <div class="topic-tag">☁️ Cloud Architecture</div>
+                    <div class="topic-tag">🤖 AI & Machine Learning</div>
+                    <div class="topic-tag">🏗️ System Design</div>
+                    <div class="topic-tag">💻 Software Engineering</div>
+                    <div class="topic-tag">📊 Data Engineering</div>
+                    <div class="topic-tag">🚀 DevOps & CI/CD</div>
+                </div>
+                <a href="https://sharma18b.github.io/rishabh.github.io/blog.html" class="btn-blog">
+                    📝 Read My Tech Blog
+                </a>
+            </div>
+        </div>
+        
+        <!-- Learning Path Section -->
+        <div class="learning-path">
+            <h2 class="section-title">🎯 Recommended Learning Path</h2>
+            <div class="path-steps">
+                <div class="path-step">
+                    <div class="step-number">1</div>
+                    <h3>Start with Fundamentals</h3>
+                    <p>Begin with Social Feeds & Infrastructure categories to understand core concepts like caching, databases, and APIs.</p>
+                </div>
+                <div class="path-step">
+                    <div class="step-number">2</div>
+                    <h3>Build Real-Time Systems</h3>
+                    <p>Move to Messaging & Events categories to learn about WebSockets, message queues, and real-time data processing.</p>
+                </div>
+                <div class="path-step">
+                    <div class="step-number">3</div>
+                    <h3>Master Distributed Systems</h3>
+                    <p>Tackle Coordination & Advanced categories to understand consensus algorithms, distributed locking, and complex architectures.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2026 System Design Study Guide • Your path to interview success</p>
+            <p style="margin-top: 0.5rem; font-size: 0.875rem;">
+                <a href="https://sharma18b.github.io/SystemDesignGuide/" style="color: white; text-decoration: underline;">View Full Site</a> • 
+                <a href="https://sharma18b.github.io/rishabh.github.io/" style="color: white; text-decoration: underline;">About Me</a> • 
+                <a href="https://sharma18b.github.io/rishabh.github.io/blog.html" style="color: white; text-decoration: underline;">Tech Blog</a>
+            </p>
+        </footer>
     </div>
-    
-    <script>
-        // Fallback redirect in case meta refresh doesn't work
-        setTimeout(function() {
-            window.location.href = 'https://sharma18b.github.io/SystemDesignGuide/';
-        }, 2000);
-    </script>
 </body>
 </html>
